@@ -1,10 +1,10 @@
 %{
 #include <stdio.h>
-#define ENTERO 1
-#define IDENTIFICADOR 2
-#define CADENA 3
-#define RESERVADA 4
-#define ESPACIO 5
+#define DENTERO 1
+#define AIDENTIFICADOR 2
+#define VCADENA 3
+#define IRESERVADA 4
+#define DESPACIO 5
 #define COMENTARIO 6
 #define OPERADOR 7
 #define ERROR 0
