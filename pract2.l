@@ -20,7 +20,7 @@ reservada class|if|then|else|while|do|od|case|of|new|isvoid|not|true|false
 {reservada}                                                 {ECHO;fwrite("  4\n",1,4,yyout);}
 {digito}{digito}*                                           {ECHO;fwrite("  1\n",1,4,yyout);}
 ({digito}|{letra}|"_")({digito}|{letra}|"_")*               {ECHO;fwrite("  2\n",1,4,yyout);}
-\"([^<<EOF>>\0\\"])*\"                                      {ECHO;fwrite("  3\n",1,4,yyout);}
+\"(.[^\0\\"])*\"                                            {ECHO;fwrite("  3\n",1,4,yyout);}
 {espacio}{espacio}*                                         {ECHO;fwrite("  5\n",1,4,yyout);}
 "/*"                                                        {ECHO;BEGIN(comentario1);}
 <comentario1>[^*\n]*                                        ECHO;
@@ -30,6 +30,9 @@ reservada class|if|then|else|while|do|od|case|of|new|isvoid|not|true|false
 {operador}                                                  {ECHO;fwrite("  7\n",1,4,yyout);}
 .                                                           {ECHO;fwrite("  0 NO SE QUE SIMBOLO ES ESTO.\n",1,31,yyout);}
 %%
+int yywrap(){
+    return 0;
+}
 int main(int argc, char *argv[]){
     yyin = fopen(argv[1],"r");
     yyout = fopen(argv[2],"w+");
